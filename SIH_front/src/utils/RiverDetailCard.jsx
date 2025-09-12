@@ -4,7 +4,10 @@ import { Droplet ,ShieldCheck,Activity,House,Droplets,TriangleAlert,ChartColumnI
 const RiverDetailCard = ({RiverData}) => {
   return (
     <div>
-        <div className='card h-45 w-100 shadow-xl rounded-lg'>
+        <div className='card h-45 w-100 shadow-xl rounded-lg overflow-hidden'>
+            <div className='h-1 w-full bg-green-200'>
+
+            </div>
                             <div className='flex justify-between pt-2'>
                                 <h1 className='ml-2 text-m pl-3 tracking-wide'>{RiverData.title}</h1>
                                 <div className='flex items-center justify-center mr-6 px-2 bg-green-200 rounded-xl'>
@@ -13,15 +16,15 @@ const RiverDetailCard = ({RiverData}) => {
                                 </div>
                             </div>
                             <div className='grid grid-cols-3 gap-4 mt-3 px-4'>
-                                <div className='h-20 rounded-lg bg-blue-100 flex flex-col items-center justify-center'>
+                                <div className='h-20 rounded-lg bg-gray-200 flex flex-col items-center justify-center'>
                                     <h1 className='text-[11px]'>pH Level</h1>
                                     <h1 className='text-[20px] mt-2 font-bold text-green-700'>{RiverData.ph}</h1>
                                 </div>
-                                <div className='h-20 rounded-lg bg-blue-100 flex flex-col items-center justify-center'>
+                                <div className='h-20 rounded-lg bg-gray-200 flex flex-col items-center justify-center'>
                                     <h1 className='text-[11px]'>Turbidity</h1>
                                     <h1 className='text-[20px] mt-2 font-bold text-green-700'>{RiverData.turbidity}</h1>
                                 </div>
-                                <div className='h-20 rounded-lg bg-blue-100 flex flex-col items-center justify-center'>
+                                <div className='h-20 rounded-lg bg-gray-200 flex flex-col items-center justify-center'>
                                     <h1 className='text-[11px]'>e coli</h1>
                                     <h1 className='text-[20px] mt-2 font-bold text-green-700'>{RiverData.ecoli}</h1>
                                 </div>

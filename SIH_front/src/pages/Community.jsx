@@ -1,15 +1,11 @@
 import React from 'react'
-import { Droplet ,ShieldCheck,Activity,House,Droplets,TriangleAlert,ChartColumnIncreasing,Settings} from 'lucide-react'
+import { Droplet ,ShieldCheck,Activity,House,Droplets,TriangleAlert,ChartColumnIncreasing,Settings,User} from 'lucide-react'
 import RiverDetail from '../utils/RiverDetail'
 import { Link } from 'react-router-dom'
-import Card from '../utils/Card'
-import RiverData from '../utils/RiverData'
 
-
-
-const WaterQuality = () => {
+const Community = () => {
   return (
-     <div className='h-screen w-full flex '>
+    <div className='h-screen w-full flex '>
         <div className='navbar w-[15%] h-full border-r-2 border-gray-200 absolute'>
                     <div className='flex items-center  gap-2 mt-5 mb-10 px-4  border-b-2 border-gray-200 py-3'>
                         <Activity size={30} className='bg-green-200 rounded-lg'/>
@@ -56,7 +52,7 @@ const WaterQuality = () => {
                 </div>
         <div className='w-[15%] h-full'></div>        
         <div className='w-[85%] h-full p-5 mt-10'>
-            <RiverDetail />
+            
             
            
             
@@ -65,4 +61,4 @@ const WaterQuality = () => {
   )
 }
 
-export default WaterQuality
+export default Community

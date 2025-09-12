@@ -23,7 +23,7 @@ const RiverData=[
 
 const RiverDetail = () => {
   return (
-    <div className='flex gap-2 grid grid-cols-2'>
+    <div className='flex gap-2 grid grid-cols-2 '>
         {RiverData.map(RiverData=>{
             return(
                 <RiverDetailCard key={RiverData.id} RiverData={RiverData} />

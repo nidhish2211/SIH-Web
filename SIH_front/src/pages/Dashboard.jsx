@@ -1,5 +1,5 @@
 import React from 'react'
-import { Droplet ,ShieldCheck,Activity,House,Droplets,TriangleAlert,ChartColumnIncreasing,Settings} from 'lucide-react'
+import { Droplet ,ShieldCheck,Activity,House,Droplets,TriangleAlert,ChartColumnIncreasing,Settings,User} from 'lucide-react'
 import RiverDetail from '../utils/RiverDetail'
 import { Link } from 'react-router-dom'
 
@@ -81,7 +81,7 @@ const Dashboard = () => {
                 </div>
                 <div className='flex rounded-lg p-2 w-60 bg-gradient-to-b from-gray-10 to-gray-200 shadow-lg '>
                     <div className='h-full w-10 flex items-center'>
-                        <Droplet />
+                        <TriangleAlert size={30} className='text-amber-300 bg-amber-100 rounded-sm' />
 
                     </div>
                         <div className='flex flex-col  justify-center'>
@@ -92,7 +92,7 @@ const Dashboard = () => {
                     </div>
                     <div className='flex rounded-lg p-2 w-60 bg-gradient-to-b from-gray-10 to-gray-200 shadow-lg  '>
                         <div className='h-full w-10 flex items-center'>
-                            <Droplet />
+                            <ChartColumnIncreasing size={30} className='text-blue-300 bg-blue-100 rounded-sm'/>
 
                         </div>
                         <div className='flex flex-col  justify-center'>
@@ -103,7 +103,7 @@ const Dashboard = () => {
                     </div>
                 <div className='flex rounded-lg p-2 w-60 bg-gradient-to-b from-gray-10 to-gray-200 shadow-lg  '>
                     <div className='h-full w-10 flex items-center'>
-                        <Droplet />
+                        <User size={30} className='text-emerald-500 bg-emerald-100 rounded-sm' />
 
                     </div>
                     <div className='flex flex-col  justify-center'>
