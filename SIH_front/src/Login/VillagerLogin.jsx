@@ -1,33 +1,67 @@
 import React, { useState } from "react";
-import {
-  Droplets,
-  Globe,
-  Phone,
-  Key,
-  Check,
-  Info,
-  Eye,
-} from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Droplets, Globe, Phone, Key, Check, Info, Eye } from "lucide-react";
 
 export default function VillagerLogin() {
+  const navigate = useNavigate();
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
   const [showOtp, setShowOtp] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [token, setToken] = useState("");
+  const [user, setUser] = useState(null);
 
-  const handleGetOtp = () => {
+  // Backend URL (adjust if needed)
+  const API_BASE = "http://localhost:3000";
+
+  const handleGetOtp = async () => {
+    setError("");
     if (!phone) {
-      alert("📱 Please enter your mobile number.");
+      setError("📱 Please enter your mobile number.");
       return;
     }
-    setShowOtp(true);
+    setLoading(true);
+    try {
+      const res = await fetch(`${API_BASE}/send-otp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Failed to send OTP");
+      setShowOtp(true);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
+    setError("");
     if (!otp) {
-      alert("🔑 Please enter the OTP.");
+      setError("🔑 Please enter the OTP.");
       return;
     }
-    alert("✅ Logged in successfully (mock flow). Connect OTP API here.");
+    setLoading(true);
+    try {
+      const res = await fetch(`${API_BASE}/verify-otp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone, otp }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "OTP verification failed");
+      setToken(data.token);
+      setUser(data.user);
+      alert("✅ Logged in successfully!");
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -50,6 +84,11 @@ export default function VillagerLogin() {
           </button>
         </div>
 
+        {/* Error Message */}
+        {error && (
+          <div className="mb-2 text-red-600 text-sm text-center">{error}</div>
+        )}
+
         {/* Phone Input */}
         <div className="mb-4">
           <label className="block text-gray-600 text-sm mb-1">
@@ -63,6 +102,7 @@ export default function VillagerLogin() {
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter Mobile Number"
               className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none"
+              disabled={loading}
             />
           </div>
         </div>
@@ -70,7 +110,9 @@ export default function VillagerLogin() {
         {/* OTP Section */}
         {showOtp && (
           <div className="mb-4">
-            <label className="block text-gray-600 text-sm mb-1">Enter OTP</label>
+            <label className="block text-gray-600 text-sm mb-1">
+              Enter OTP
+            </label>
             <div className="relative">
               <Key className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
               <input
@@ -79,6 +121,7 @@ export default function VillagerLogin() {
                 onChange={(e) => setOtp(e.target.value)}
                 placeholder="Enter OTP"
                 className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none"
+                disabled={loading}
               />
             </div>
           </div>
@@ -90,19 +133,30 @@ export default function VillagerLogin() {
             <button
               onClick={handleGetOtp}
               className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg flex items-center justify-center gap-2"
+              disabled={loading}
             >
-              <Key className="w-5 h-5" /> Get OTP
+              <Key className="w-5 h-5" /> {loading ? "Sending..." : "Get OTP"}
             </button>
           )}
           {showOtp && (
             <button
               onClick={handleLogin}
               className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg flex items-center justify-center gap-2"
+              disabled={loading}
             >
-              <Check className="w-5 h-5" /> Login
+              <Check className="w-5 h-5" /> {loading ? "Verifying..." : "Login"}
             </button>
           )}
         </div>
+
+        {/* Show user info after login */}
+        {user && (
+          <div className="mt-6 p-4 bg-green-100 rounded-lg text-green-800 text-sm">
+            <div>Welcome, {user.phone}!</div>
+            <div>User ID: {user._id}</div>
+            <div>Verified: {user.verified ? "Yes" : "No"}</div>
+          </div>
+        )}
 
         {/* Help / Accessibility */}
         <div className="flex justify-between items-center mt-6 text-sm text-gray-500">
