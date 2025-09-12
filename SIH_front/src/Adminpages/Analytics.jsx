@@ -12,7 +12,7 @@ const Analytics = () => {
                                        <Activity size={30} className='bg-green-200 rounded-lg'/>
                                        <h1 className='font-bold'>DHARA</h1>
                                    </div>
-                                   <NavLink to="/" className={({ isActive }) =>
+                                   <NavLink to="/dashboard" className={({ isActive }) =>
                                                `flex  rounded-lg  transition ${isActive ? "bg-cyan-700 text-white" : "hover:bg-cyan-700 hover:text-white"}`}>
                                        <div className='flex items-center gap-2 p-3 px-5 hover:bg-cyan-700 hover:text-white rounded-lg mx-5 '>
                                            <House />
