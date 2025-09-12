@@ -1,51 +1,54 @@
 import React from 'react'
-import { Droplet ,ShieldCheck,Activity,House} from 'lucide-react'
+import { Droplet ,ShieldCheck,Activity,House,Droplets,TriangleAlert,ChartColumnIncreasing,Settings} from 'lucide-react'
+import RiverDetail from '../utils/RiverDetail'
+import { Link } from 'react-router-dom'
 
 
 const Dashboard = () => {
   return (
     <div className='h-screen w-full flex'>
-        <div className='navbar w-[15%] h-full border-r-2'>
-            <div className='flex items-center  gap-2 mt-5 mb-10 px-4 mx-5'>
+        <div className='navbar w-[15%] h-full border-r-2 border-gray-200'>
+            <div className='flex items-center  gap-2 mt-5 mb-10 px-4  border-b-2 border-gray-200 py-3'>
                 <Activity size={30} className='bg-green-200 rounded-lg'/>
                 <h1 className='font-bold'>DHARA</h1>
             </div>
-            <button>
+            <Link to="/">
                 <div className='flex items-center gap-2 p-3 px-5 hover:bg-cyan-700 hover:text-white rounded-lg mx-5 '>
                     <House />
                     <h1>Dashboard</h1>
                 </div>
-            </button>
-             <button>
+            </Link>    
+            
+             <Link to="/WaterQuality">
                 <div className='flex items-center gap-2 p-3 px-5 hover:bg-cyan-700 hover:text-white rounded-lg mx-5 '>
-                    <House />
+                    <Droplets />
                     <h1>Water Quality</h1>
                 </div>
-            </button>
-             <button>
+            </Link>
+            <Link to="/Alerts">
                 <div className='flex items-center gap-2 p-3 px-5 hover:bg-cyan-700 hover:text-white rounded-lg mx-5 '>
-                    <House />
+                    <TriangleAlert />
                     <h1>Alerts</h1>
                 </div>
-            </button>
-             <button>
+            </Link>
+            <Link to="/Analytics" >
                 <div className='flex items-center gap-2 p-3 px-5 hover:bg-cyan-700 hover:text-white rounded-lg mx-5 '>
-                    <House />
+                    <ChartColumnIncreasing />
                     <h1>Analytics</h1>
                 </div>
-            </button>
-             <button>
+            </Link>
+            <Link to="/Community">
                 <div className='flex items-center gap-2 p-3 px-5 hover:bg-cyan-700 hover:text-white rounded-lg mx-5 '>
                     <House />
                     <h1>Community</h1>
                 </div>
-            </button>
-             <button>
+            </Link>
+            <Link to="/Settings">
                 <div className='flex items-center gap-2 p-3 px-5 hover:bg-cyan-700 hover:text-white rounded-lg mx-5 '>
-                    <House />
+                    <Settings />
                     <h1>Settings</h1>
                 </div>
-            </button>
+            </Link>
 
         </div>
         <div className='w-[85%] h-full p-5 rounded-lg bg-gray-70'>
@@ -115,66 +118,7 @@ const Dashboard = () => {
                 <div className='h-full w-[70%] mt-5'>
                     <h1 className='text-xl'>Water Sources</h1>
                     <div className='cards flex flex-wrap gap-2 justify-evenly mt-4'>
-                        <div className='card h-45 w-100 shadow-xl rounded-lg'>
-                            <div className='flex justify-between pt-2'>
-                                <h1 className='ml-2 text-m pl-3 tracking-wide'>Bhramputra River-Guhwati</h1>
-                                <div className='flex items-center justify-center mr-6 px-2 bg-green-200 rounded-xl'>
-                                    <ShieldCheck size={15} className='text-green-700' />
-                                    <h3 className='text-sm text-green-700'>Safe</h3>
-                                </div>
-                            </div>
-                            <div className='grid grid-cols-3 gap-4 mt-3 px-4'>
-                                <div className='h-20 rounded-lg bg-blue-100 flex flex-col items-center justify-center'>
-                                    <h1 className='text-[11px]'>pH Level</h1>
-                                    <h1 className='text-[20px] mt-2 font-bold text-green-700'>7.2</h1>
-                                </div>
-                                <div className='h-20 rounded-lg bg-blue-100 flex flex-col items-center justify-center'>
-                                    <h1 className='text-[11px]'>Turbidity</h1>
-                                    <h1 className='text-[20px] mt-2 font-bold text-green-700'>3.1 NTU</h1>
-                                </div>
-                                <div className='h-20 rounded-lg bg-blue-100 flex flex-col items-center justify-center'>
-                                    <h1 className='text-[11px]'>e coli</h1>
-                                    <h1 className='text-[20px] mt-2 font-bold text-green-700'>0</h1>
-                                </div>
-                            </div>
-                            <hr className="border-t border-gray-300 mx-4 mt-4" />
-                            <div className='flex justify-between px-4 mt-2'>
-                                <h3 className='text-sm text-gray-500'>Last Updated</h3>
-                                <h3 className='text-sm text-gray-500'>2 minutes ago</h3>
-                            </div>
-                            
-
-                        </div>
-                        <div className='card h-45 w-100 shadow-xl rounded-lg'>
-                            <div className='flex justify-between pt-2'>
-                                <h1 className='ml-2 text-m pl-3 tracking-wide'>Bhramputra River-Guhwati</h1>
-                                <div className='flex items-center justify-center mr-6 px-2 bg-green-200 rounded-xl'>
-                                    <ShieldCheck size={15} className='text-green-700' />
-                                    <h3 className='text-sm text-green-700'>Safe</h3>
-                                </div>
-                            </div>
-                            <div className='grid grid-cols-3 gap-4 mt-3 px-4'>
-                                <div className='h-20 rounded-lg bg-blue-100 flex flex-col items-center justify-center'>
-                                    <h1 className='text-[11px]'>pH Level</h1>
-                                    <h1 className='text-[20px] mt-2 font-bold text-green-700'>7.2</h1>
-                                </div>
-                                <div className='h-20 rounded-lg bg-blue-100 flex flex-col items-center justify-center'>
-                                    <h1 className='text-[11px]'>Turbidity</h1>
-                                    <h1 className='text-[20px] mt-2 font-bold text-green-700'>3.1 NTU</h1>
-                                </div>
-                                <div className='h-20 rounded-lg bg-blue-100 flex flex-col items-center justify-center'>
-                                    <h1 className='text-[11px]'>e coli</h1>
-                                    <h1 className='text-[20px] mt-2 font-bold text-green-700'>0</h1>
-                                </div>
-                            </div>
-                            <hr className="border-t border-gray-300 mx-4 mt-4" />
-                            <div className='flex justify-between px-4 mt-2'>
-                                <h3 className='text-sm text-gray-500'>Last Updated</h3>
-                                <h3 className='text-sm text-gray-500'>2 minutes ago</h3>
-                            </div>
-                            
-
-                        </div>
+                        <RiverDetail />
                         
 
                     </div>
