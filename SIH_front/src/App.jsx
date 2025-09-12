@@ -1,12 +1,13 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import VillagerLogin from "./Login/VillagerLogin";
-import Login from "./Login";
-import Dashboard from "./pages/Dashboard";
-import WaterQuality from "./pages/WaterQuality";
-import Alerts from "./pages/Alerts";
-import Analytics from "./pages/Analytics";
-import Community from "./pages/Community";
+
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import VillagerLogin from './Login/VillagerLogin'
+import Login from './Login'
+import Dashboard from './Adminpages/Dashboard'
+import WaterQuality from './Adminpages/WaterQuality'
+import Alerts from './Adminpages/Alerts'
+import Analytics from './Adminpages/Analytics'
+import Community from './Adminpages/Communit'
 
 const App = () => {
   return (
