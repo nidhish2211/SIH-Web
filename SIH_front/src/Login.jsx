@@ -13,7 +13,7 @@ const Login = () => {
       title: "ASHA Worker",
       description: "Accredited Social Health Activist",
       icon: <FaPersonCircleCheck />,
-      route: "/login/asha",
+      route: "/dashboard",
       
     },
     {
@@ -21,7 +21,7 @@ const Login = () => {
       title: "Government Official", 
       description: "Administrative & Healthcare Officials",
       icon: <BsBuildingsFill />,
-      route: "/login/govt",
+      route: "/dashboard",
       
     },
     {
