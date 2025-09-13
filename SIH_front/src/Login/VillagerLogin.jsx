@@ -9,7 +9,6 @@ export default function VillagerLogin() {
   const [showOtp, setShowOtp] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [token, setToken] = useState("");
   const [user, setUser] = useState(null);
 
   // Backend URL (adjust if needed)
@@ -22,11 +21,16 @@ export default function VillagerLogin() {
       return;
     }
     setLoading(true);
+    // Prepend +91 if not present
+    let formattedPhone = phone.trim();
+    if (!formattedPhone.startsWith("+91")) {
+      formattedPhone = "+91" + formattedPhone.replace(/^0+/, "");
+    }
     try {
       const res = await fetch(`${API_BASE}/send-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone }),
+        body: JSON.stringify({ phone: formattedPhone }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Failed to send OTP");
@@ -45,17 +49,22 @@ export default function VillagerLogin() {
       return;
     }
     setLoading(true);
+    // Prepend +91 if not present
+    let formattedPhone = phone.trim();
+    if (!formattedPhone.startsWith("+91")) {
+      formattedPhone = "+91" + formattedPhone.replace(/^0+/, "");
+    }
     try {
       const res = await fetch(`${API_BASE}/verify-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone, otp }),
+        body: JSON.stringify({ phone: formattedPhone, otp }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "OTP verification failed");
-      setToken(data.token);
+      // No need to store JWT, it's now in HttpOnly cookie
       setUser(data.user);
-      alert("✅ Logged in successfully!");
+      alert("Logged in!");
       navigate("/dashboard");
     } catch (err) {
       setError(err.message);
