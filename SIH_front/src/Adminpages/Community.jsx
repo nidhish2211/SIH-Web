@@ -121,19 +121,51 @@ const Community = () => {
         </div>
 
         {/* Stats Cards */}
-        <div className="flex justify-evenly items-center mt-5">
-          {[1, 2, 3, 4].map((_, i) => (
-            <div key={i} className="flex rounded-lg p-2 w-60 bg-gradient-to-b from-gray-10 to-gray-200 shadow-lg">
-              <div className="h-full w-10 flex items-center">
-                <TriangleAlert size={30} className="text-amber-300 bg-amber-100 rounded-sm" />
-              </div>
-              <div className="flex flex-col justify-center">
-                <h1 className="font-bold">1</h1>
-                <p className="text-sm">Active Alerts</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <div className="info h-[10%] w-full mt-4 flex justify-evenly">
+                  <div className="flex rounded-lg p-2 w-60 bg-gradient-to-b from-gray-10 to-gray-200 shadow-lg">
+                    <div className="h-full w-10 flex items-center mr-2">
+                      <User
+                        size={30}
+                        className="text-green-600 bg-gradient-to-r from-green-100 to-green-200 rounded-sm"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <h1 className="font-bold">1,50,000</h1>
+                      <p className="text-sm">Total Population</p>
+                    </div>
+                  </div>
+        
+                  <div className="flex rounded-lg p-2 w-60 bg-gradient-to-b from-gray-10 to-gray-200 shadow-lg">
+                    <div className="h-full w-10 flex items-center">
+                      <Heart size={30} className="text-amber-300 bg-amber-100 rounded-sm" />
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <h1 className="font-bold">365</h1>
+                      <p className="text-sm">ASHA Workers</p>
+                    </div>
+                  </div>
+        
+                  <div className="flex rounded-lg p-2 w-60 bg-gradient-to-b from-gray-10 to-gray-200 shadow-lg">
+                    <div className="h-full w-10 flex items-center">
+                      <ShieldCheck size={30} className="text-blue-300 bg-blue-100 rounded-sm" />
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <h1 className="font-bold">38%</h1>
+                      <p className="text-sm">Healthy HouseHolds</p>
+                    </div>
+                  </div>
+        
+                  <div className="flex rounded-lg p-2 w-60 bg-gradient-to-b from-gray-10 to-gray-200 shadow-lg">
+                    <div className="h-full w-10 flex items-center">
+                      <TriangleAlert size={30} className="text-emerald-500 bg-emerald-100 rounded-sm" />
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <h1 className="font-bold">36</h1>
+                      <p className="text-sm">Recent Reports</p>
+                    </div>
+                  </div>
+                </div>
+        
 
         {/* Community Health Status */}
         <div className="mt-10 bg-white p-5 border-1 border-gray-100 shadow-lg rounded-lg">
